@@ -48,4 +48,26 @@ impl Savings {
         self.client
             .get_signed(API::Savings(Sapi::DepositAddress), Some(request))
     }
+
+    /// Fetch deposit history.
+    pub fn get_deposit_history(&self, coin: Option<String>) -> Result<Vec<DepositHistory>> {
+        let mut parameters = BTreeMap::new();
+        if let Some(coin) = coin {
+            parameters.insert("coin".into(), coin);
+        }
+        let request = build_signed_request(parameters, self.recv_window)?;
+        self.client
+            .get_signed(API::Savings(Sapi::DepositHistory), Some(request))
+    }
+
+    /// Fetch withdraw history.
+    pub fn get_withdraw_history(&self, coin: Option<String>) -> Result<Vec<WithdrawHistory>> {
+        let mut parameters = BTreeMap::new();
+        if let Some(coin) = coin {
+            parameters.insert("coin".into(), coin);
+        }
+        let request = build_signed_request(parameters, self.recv_window)?;
+        self.client
+            .get_signed(API::Savings(Sapi::WithdrawHistory), Some(request))
+    }
 }

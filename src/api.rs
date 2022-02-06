@@ -121,6 +121,8 @@ impl From<API> for String {
                 Sapi::AllCoins => "/sapi/v1/capital/config/getall",
                 Sapi::AssetDetail => "/sapi/v1/asset/assetDetail",
                 Sapi::DepositAddress => "/sapi/v1/capital/deposit/address",
+                Sapi::DepositHistory => "/sapi/v1/capital/deposit/hisrec",
+                Sapi::WithdrawHistory => "/sapi/v1/capital/withdraw/history",
             },
             API::Futures(route) => match route {
                 Futures::Ping => "/fapi/v1/ping",

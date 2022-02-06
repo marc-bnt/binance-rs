@@ -1200,6 +1200,40 @@ pub struct DepositAddress {
     pub url: String,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct DepositHistory {
+    pub amount: String,
+    pub coin: String,
+    pub network: String,
+    pub status: u32,
+    pub address: String,
+    pub address_tag: String,
+    pub tx_id: String,
+    pub insert_time: u64,
+    pub transfer_type: u32,
+    pub unlock_confirm: u32,
+    pub confirm_times: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct WithdrawHistory {
+    pub address: String,
+    pub amount: String,
+    pub apply_time: String,
+    pub coin: String,
+    pub id: String,
+    pub withdraw_order_id: Option<String>,
+    pub network: String,
+    pub transfer_type: u32,
+    pub status: u32,
+    pub transaction_fee: String,
+    pub confirm_no: u32,
+    pub info: String,
+    pub tx_id: String,
+}
+
 pub(crate) mod string_or_float {
     use std::fmt;
 
